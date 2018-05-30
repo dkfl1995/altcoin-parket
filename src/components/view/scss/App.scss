@@ -1,0 +1,9 @@
+$bg_color_from: rgb(47, 16, 8);
+$bg_color_to: rgb(77, 9, 9);
+
+
+
+.app {
+  text-align: center;
+  background: linear-gradient(to bottom left, $bg_color_from, $bg_color_to)
+}

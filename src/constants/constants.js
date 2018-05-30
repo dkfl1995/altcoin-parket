@@ -1,0 +1,3 @@
+export const RECEIVE_INFO = "RECEIVE_INFO";
+export const RECEIVE_FAILED = "RECEIVE_FAILED";
+export const RECEIVING = "RECEIVING";
