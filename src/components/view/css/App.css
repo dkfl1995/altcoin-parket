@@ -2,4 +2,26 @@
   text-align: center;
   background: linear-gradient(to bottom left, #2f1008, #4d0909); }
 
-/*# sourceMappingURL=App.css.map */
+#text {
+  display: inline-block;
+  width: 50%; }
+
+.btn {
+  display: inline-block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #e8e8e8;
+  width: fit-content;
+  border: 2px solid #282828;
+  border-radius: 5px;
+  padding: .4%;
+  transition: background .5s; }
+  .btn:hover {
+    background: #5fdeb1; }
+
+.coin-table {
+  border: 1px solid #1b4134;
+  border-collapse: collapse; }
+  .coin-table .table-head {
+    padding: 10px; }
+    .coin-table .table-head td {
+      border: 1px solid #1b4134; }

@@ -1,28 +1,37 @@
 var express = require('express');
-var router = express.Router();
 var path = require('path');
 var http = require('http');
-var bodyparser = require('body-parser');
+var bodyParser = require('body-parser');
 var superagent = require('superagent');
+var cors = require('cors');
 
 var PORT = process.env.port || 3001;
 
 var app = express();
 
-app.use(bodyparser());
+app.use(cors());
 
-app.use(router);
+app.use(bodyParser());
+var parser = bodyParser.json({type: 'application/json'});
 
 app.use('/', express.static(path.resolve(__dirname + '/build')));
 
-router.get('/description', bodyparser.json(), (req, res) => {
-    // var currency = req.body.curr;
+var apiDomain = 'https://min-api.cryptocompare.com';
 
-    var descr = superagent.get('https://min-api.cryptocompare.com/data/price?fsym=%s&tsyms=%s',fromSymb ,toSymb).pipe(res).end(res);
-    res.send(descr);
+app.get('/descr', parser,(req, res) => {
+    var info;
+    var currency = req.body.curr;
+    var fromSymb = 'BTC,ETH,EOS,BCH,XRP,TRX,LTC,ADA,IOT,ETC';
+    var curr = 'USD';
+    superagent.get(apiDomain+'/data/pricemultifull')
+    .query({fsyms: fromSymb, tsyms: curr})
+    .end((err, result) => {
+        info = result.body;
+        res.send(info);
+    });
 });
 
-var server = http.createServer().listen(PORT, (err) => {
+app.listen(PORT, (err) => {
     if(err) console.info("Error did due to starting", err);
     console.log("Server started at %s", PORT);
 });

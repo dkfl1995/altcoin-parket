@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "node-sass": "^4.9.0",
     "react": "^16.4.0",
@@ -18,9 +19,12 @@
     "superagent": "^3.8.3"
   },
   "scripts": {
-    "start": "node-sass --source-map=true --recursive=true --watch src/components/scss --output src/components/css | react-scripts start",
+    "start": "npm-run-all -p watch-css react-start",
+    "react-start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch-css": "npm run build-css && node-sass-chokidar src/components/view/scss -o src/components/view/css --watch --recursive --usePolling --polling-interval 500",
+    "build-css": "node-sass-chokidar src/components/view/scss -o src/components/view/css"
   }
 }
