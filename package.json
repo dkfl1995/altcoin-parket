@@ -7,6 +7,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "node-sass": "^4.9.0",
+    "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
@@ -27,5 +28,8 @@
     "eject": "react-scripts eject",
     "watch-css": "npm run build-css && node-sass-chokidar src/components/view/scss -o src/components/view/css --watch --recursive --usePolling --polling-interval 500",
     "build-css": "node-sass-chokidar src/components/view/scss -o src/components/view/css"
+  },
+  "devDependencies": {
+    "hoek": "^5.0.3"
   }
 }

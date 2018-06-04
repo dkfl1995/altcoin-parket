@@ -26,8 +26,7 @@ function receiving(bool){
 
 export function fetchInfo(){
     return dispatch => {
-        var res;
-        return res = new Promise((resolve, reject) => {
+        var res = new Promise((resolve, reject) => {
             resolve([
                 dispatch(receiving(true)),
                 dispatch(receiveFailed(false))
@@ -53,5 +52,6 @@ export function fetchInfo(){
                 dispatch(receiving(false));
             })
         );
+        return res; 
     };
 }

@@ -20,7 +20,6 @@ var apiDomain = 'https://min-api.cryptocompare.com';
 
 app.get('/descr', parser, (req, res) => {
     var info, info1;
-    // var fromSymb = 'BTC,ETH,EOS,BCH,XRP,TRX,LTC,ADA,IOT,ETC';
     var curr = 'USD';
 
     superagent.get(apiDomain+'/data/top/totalvol')
@@ -38,25 +37,6 @@ app.get('/descr', parser, (req, res) => {
         res.send(obj);
     });
 });
-    // var x = async => {
-    //     return function(){
-    //             var fx = await => superagent.get(apiDomain+'/data/pricemultifull')
-    //             .query({fsyms: fromSymb, tsyms: curr})
-    //             .end((err, result) => {
-    //                 info = Object.assign({}, info, result);
-    //                 console.log(info);
-    //                 return info;
-    //             });
-    //             var s = await => superagent.get(apiDomain+'/data/coinlist')
-    //             .end((err, result) => {
-    //                 info = Object.assign({}, info, result);
-    //                 console.log(info);
-    //                 return info;
-    //             });
-    //     };
-    // };
-    // res.send([foo, bar]);
-
 
 app.listen(PORT, (err) => {
     if(err) console.info("Error did due to starting", err);

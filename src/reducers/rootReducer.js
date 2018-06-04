@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-let initialState = [];
+let initialState = {};
 
 function receiveInfo(state = initialState, action){
     switch(action.type){

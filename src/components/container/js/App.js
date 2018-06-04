@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {fetchInfo} from '../../../actions/actions';
 import AppView from "../../view/js/AppView";
+import PropTypes from 'prop-types';
 
 const mapStateToProps = (state) => {
   return {
@@ -44,6 +45,12 @@ class App extends Component {
             </div>
         );
     }
+}
+
+App.propTypes = {
+  info: PropTypes.object,
+  isFailed: PropTypes.bool,
+  isOn: PropTypes.bool
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
