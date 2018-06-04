@@ -26,12 +26,21 @@ function receiving(bool){
 
 export function fetchInfo(){
     return dispatch => {
-        return fetch(IP+'/descr',{
-            body: JSON.stringify()
-        })
+        var res;
+        return res = new Promise((resolve, reject) => {
+            resolve([
+                dispatch(receiving(true)),
+                dispatch(receiveFailed(false))
+            ]);
+            if (reject){
+                reject();
+            }
+            
+        }).then(
+            fetch(IP+'/descr',{
+                body: JSON.stringify()
+            })
             .then(res => {
-                dispatch(receiveFailed(false));
-                dispatch(receiving(true));
                 var info = res.json();
                 return info;
             })
@@ -40,8 +49,9 @@ export function fetchInfo(){
                 dispatch(receiveInfo(json));
             })
             .catch(err => {
-                console.log("Error did", err);
                 dispatch(receiveFailed(true));
-            });
+                dispatch(receiving(false));
+            })
+        );
     };
 }

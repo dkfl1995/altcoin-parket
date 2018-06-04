@@ -2,10 +2,6 @@
   text-align: center;
   background: linear-gradient(to bottom left, #2f1008, #4d0909); }
 
-#text {
-  display: inline-block;
-  width: 50%; }
-
 .btn {
   display: inline-block;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -18,10 +14,23 @@
   .btn:hover {
     background: #5fdeb1; }
 
+.logos {
+  width: 1.5em;
+  margin: 0 4%; }
+
 .coin-table {
   border: 1px solid #1b4134;
-  border-collapse: collapse; }
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center; }
   .coin-table .table-head {
     padding: 10px; }
     .coin-table .table-head td {
-      border: 1px solid #1b4134; }
+      border-left: 1px solid #1b4134;
+      border-right: 1px solid #1b4134; }
+  .coin-table tr:nth-of-type(even) {
+    background: rgba(176, 42, 42, 0.3); }
+  .coin-table .table-body td {
+    border-left: 1px solid #1b4134;
+    border-right: 1px solid #1b4134;
+    text-overflow: ellipsis; }

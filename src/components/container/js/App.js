@@ -29,7 +29,6 @@ class App extends Component {
     }
     componentWillReceiveProps(nextProps){
       if(nextProps.isFailed !== this.state.isFailed || nextProps.isOn !== this.state.isOn || nextProps.info !== this.state.info){
-        console.log(nextProps);
           this.setState({
             info: nextProps.info,
             isFailed: nextProps.isFailed,
@@ -38,7 +37,6 @@ class App extends Component {
       }
   }
     render(){
-      
       const props = this.props;
         return (
             <div>

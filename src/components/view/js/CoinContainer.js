@@ -1,14 +1,15 @@
 import React from 'react';
 
 const CoinContainer = (props) => {
-    let obj;
-    if(props.info && props.info.hasOwnProperty('RAW')){
-        obj = props.info.RAW;
+    let arr, apiDomain;
+    if(props.info && typeof props.info === 'object'){
+        arr = props.info;
+        apiDomain = 'https://cryptocompare.com';
     }
 
     const iterTableHeadElems = function(info){
         if(info){
-            var infoNames = ['FROMSYMBOL', 'LASTVOLUME', 'MKTCAP', 'SUPPLY', 'PRICE'];
+            var infoNames = ['', 'Name', 'Price'];
             return infoNames.map((value,index) => {
                 return (
                     <td key={index}>
@@ -21,11 +22,16 @@ const CoinContainer = (props) => {
 
     const iterTable = function(info){
         if(info){
+            console.log(info);
             var coinsInfo = Object.values(info);
+            var name, url, price, tsym;
             return coinsInfo.map((value, index) => {
-                var infoElems = value.USD;
+                name = value.CoinInfo.Name;
+                url = apiDomain + value.CoinInfo.ImageUrl;
+                tsym = value.ConversionInfo.CurrencyTo;
+                price = value.ConversionInfo.RAW[0].split('~')[5];
                 return (<tr key={index}>
-                    <td>{infoElems['FROMSYMBOL']}</td><td>{fixFloat(infoElems['LASTVOLUME'], 2)}</td><td>{fixFloat(infoElems['MKTCAP'], 2)}</td><td>{fixFloat(infoElems['SUPPLY'], 2)}</td><td>{fixFloat(infoElems['PRICE'], 4)+' '+infoElems['TOSYMBOL']}</td>
+                    <td>{index+1}.</td><td><img src={url} alt="" className="logos" />{name}</td><td>{fixFloat(price, 4)+' '+tsym}</td>
                 </tr>);
             });
         }
@@ -40,13 +46,13 @@ const CoinContainer = (props) => {
             <thead className="table-head">
                 <tr>
                     {
-                        obj ? iterTableHeadElems(obj) : null
+                        arr ? iterTableHeadElems(arr) : null
                     }
                 </tr>
             </thead>
             <tbody className="table-body">
                 {
-                    obj ? iterTable(obj) : null
+                    arr ? iterTable(arr) : null
                 }
             </tbody>
         </table>
