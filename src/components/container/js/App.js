@@ -19,32 +19,12 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class App extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-          isOn: props.isOn,
-          isFailed: props.isFailed,
-          info: props.info
-        };
-    }
-    componentWillReceiveProps(nextProps){
-      if(nextProps.isFailed !== this.state.isFailed || nextProps.isOn !== this.state.isOn || nextProps.info !== this.state.info){
-          this.setState({
-            info: nextProps.info,
-            isFailed: nextProps.isFailed,
-            isOn: nextProps.isOn
-          });
-      }
-  }
-    render(){
-      const props = this.props;
-        return (
-            <div>
-                <AppView {...props}/>
-            </div>
-        );
-    }
+const App = (props) => {
+  return (
+          <div>
+              <AppView {...props}/>
+          </div>
+  )
 }
 
 App.propTypes = {

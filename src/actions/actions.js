@@ -36,8 +36,8 @@ export function fetchInfo(){
                 return info;
             })
             .then(json => {
-                dispatch(receiving(false));
                 dispatch(receiveInfo(json));
+                dispatch(receiving(false));
             })
             .catch(err => {
                 dispatch(receiveFailed(true));

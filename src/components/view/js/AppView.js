@@ -11,7 +11,7 @@ const AppView = (props) => {
                 <div className='row'>
                     <p id="text" className="col-md-8 col-10 ">{"Hey, Do u want to get in touch with lastest e-coins prices? Tap at button below than"}</p>
                     <div className="col-md-4 col-2 ">
-                        <div className="btn " onClick={e => {e.preventDefault(); props.fetchInfo()}}>Find out!</div>
+                        <div className="btn " onClick={ !props.isOn || (!props.isOn && !props.info) ? e => {e.preventDefault(); props.fetchInfo()} : null }>Find out!</div>
                     </div>
                     {
                         (props.info && !props.isOn) ? <CoinContainer {...props}></CoinContainer> : 
@@ -21,7 +21,7 @@ const AppView = (props) => {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
 export default AppView;

@@ -56,7 +56,7 @@ const CoinContainer = (props) => {
                 }
             </tbody>
         </table>
-    );
+    )
 }
 
 export default CoinContainer; 
