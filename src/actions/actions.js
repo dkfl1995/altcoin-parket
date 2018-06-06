@@ -25,18 +25,10 @@ function receiving(bool){
 }   
 
 export function fetchInfo(){
-    return dispatch => {
-        var res = new Promise((resolve, reject) => {
-            resolve([
-                dispatch(receiving(true)),
-                dispatch(receiveFailed(false))
-            ]);
-            if (reject){
-                reject();
-            }
-            
-        }).then(
-            fetch(IP+'/descr',{
+    return (dispatch) => {
+        dispatch(receiving(true));
+        dispatch(receiveFailed(false));
+        return fetch(IP+'/descr',{
                 body: JSON.stringify()
             })
             .then(res => {
@@ -50,8 +42,6 @@ export function fetchInfo(){
             .catch(err => {
                 dispatch(receiveFailed(true));
                 dispatch(receiving(false));
-            })
-        );
-        return res; 
+            });
     };
 }

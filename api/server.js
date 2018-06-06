@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var http = require('http');
 var bodyParser = require('body-parser');
-var superagent = require('superagent-promise')(require('superagent'), Promise);
+var superagent = require('superagent');
 var cors = require('cors');
 
 var PORT = process.env.port || 3001;

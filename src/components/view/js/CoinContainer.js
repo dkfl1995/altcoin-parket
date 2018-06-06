@@ -10,7 +10,7 @@ const CoinContainer = (props) => {
     const iterTableHeadElems = function(info){
         if(info){
             var infoNames = ['', 'Name', 'Price'];
-            return infoNames.map((value,index) => {
+            return infoNames.map((value, index) => {
                 return (
                     <td key={index}>
                         {value}
