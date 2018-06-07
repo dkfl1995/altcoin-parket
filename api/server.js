@@ -15,6 +15,7 @@ app.use(bodyParser());
 var parser = bodyParser.json({type: 'application/json'});
 
 app.use(express.static(path.resolve(__dirname + '/build')));
+
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "http://sleepy-earth-19112.herokuapp.com");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -41,6 +42,10 @@ app.get('/descr', parser, (req, res) => {
         }, {});
         res.send(obj);
     });
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/build/index.html'));
 });
 
 app.listen(PORT, (err) => {
