@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser());
 var parser = bodyParser.json({type: 'application/json'});
 
-app.use('/', express.static(path.resolve(__dirname + '/build')));
+app.use(express.static(path.resolve(__dirname + '/build')));
 
 var apiDomain = 'https://min-api.cryptocompare.com';
 
